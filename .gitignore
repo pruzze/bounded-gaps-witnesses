@@ -1,0 +1,7 @@
+__pycache__/
+*.pkl
+*.log
+progress_*.jsonl
+result_*.txt
+cache_*
+.venv/
