@@ -149,8 +149,12 @@ from 21 to 25 and writes the witness of the lowest sufficient degree.
   `Jregion` in the Lean file (4 variables, 10 basis functions, 200 million samples): all 110 Gram entries of I
   and J agree within two standard errors (relative errors 0.04 % to 0.4 %). This tests the set-up, not the
   values in 45 or 48 variables.
-- On another support the ball program reproduces a published number: the 34 digits printed in Kintali's paper
-  for the 1295-term witness of `AxiomMath/PrimeGapsLib` on his k = 48 support.
+- On another support both programs reproduce a published number: the 34 digits printed in Kintali's paper,
+  1.000774701187468444763475111497864, for the 1295-term witness of `AxiomMath/PrimeGapsLib`
+  (`PrimeGapsCert/Gap246/k50e25d25n1295.json`, read at commit `1faa7b1`, not included here) on his k = 48
+  support. The exact program gives 48 J/I = 1.00077470118746844476347511149786443813176... as the fraction in
+  `witnesses/kintali_k48_exact_ratio.txt` (numerator and denominator of 482 digits each; 46 hours on two
+  processes, `WITNESS=<that file> WORKERS=2 python run_profile.py kintali`).
 - The agreement with Theorem 11.1 of the Axiom draft to 17 digits is evidence from outside these programs that
   the support and the marginal of the 212 datum are the ones the authors used.
 - H(48) = 236 was confirmed by exhaustive search (no admissible 48-tuple of diameter at most 235; an explicit
