@@ -12,6 +12,11 @@ PROFILES = {
     "stadlmann": dict(k=49, U=fmpq(2605, 10000), Lb=fmpq(2455, 10000), delta=fmpq(28, 1000),
                       caps=lambda m: fmpq(0) if m <= 0 else (fmpq(15, 100) if m <= 2 else fmpq(17, 100)),
                       target="> 1 (paper states 49J/I > 1, no value given)"),
+    # Stadlmann's displayed support with one variable fewer (k = 48, H(48) = 236); witness of degree 22
+    "stadlmann48": dict(k=48, U=fmpq(2605, 10000), Lb=fmpq(2455, 10000), delta=fmpq(28, 1000),
+                        caps=lambda m: fmpq(0) if m <= 0 else (fmpq(15, 100) if m <= 2 else fmpq(17, 100)),
+                        target="1.0001616319193665101960411879539314036267 for witnesses/stadlmann_k48_d22.json "
+                               "(exact rational value, also enclosed by Arb)"),
     # Axiom Math draft (3 Sep 2026), Table 3, already in the dilated coordinates of its Section 9 (factor 4):
     # K = 45, L = 53/50, marginal base 249/250, g = 41/625, ten caps C(m). For our own witnesses in B_d.
     "axiom": dict(direct=True, k=45, R=fmpq(53, 50), r=fmpq(249, 250), g=fmpq(41, 625),

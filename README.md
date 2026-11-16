@@ -1,6 +1,26 @@
-# An independent witness for the numerical certificate of H_1 <= 212
+# Witnesses for the variational step in bounded gaps between primes
 
-Axiom Math's Lean formalization of the bound H_1 <= 212 for gaps between consecutive primes
+Recent bounds for H_1 = liminf (p_{n+1} - p_n) in the framework of Stadlmann (arXiv:2608.31126) end with a
+finite computation: one needs a symmetric function F on an explicit support T_k with
+
+    k * J(F) / I(F) > 1.
+
+This repository contains two such functions that were computed independently of the papers, the exact rational
+value of the ratio for each, and the programs that produced and checked them.
+
+| witness | for | k | degree | terms | k J / I (physical scale) |
+|---|---|---|---|---|---|
+| `witnesses/axiom212_k45_d21.json` | the certificate of Axiom Math's H_1 <= 212 | 45 | 21 | 846 | 1.00109602458365033006... (exact) |
+| `witnesses/axiom212_k45_d20.json` | the same | 45 | 20 | 707 | 1.00060034425677288922... (ball arithmetic) |
+| `witnesses/stadlmann_k48_d22.json` | Stadlmann's displayed support with k = 48 | 48 | 22 | 1041 | 1.00016163191936651019... (exact) |
+
+Neither is a new bound. The first fills in a hypothesis of a published formalization; the second is an
+observation about a published parameter choice. Both rest entirely on the analytic results of the papers, which
+are not examined here.
+
+## 1. The numerical certificate of H_1 <= 212
+
+Axiom Math's Lean formalization of H_1 <= 212
 ([AxiomMath/BGP212](https://github.com/AxiomMath/BGP212), read at commit `6641780`) is conditional on a
 numerical certificate, `Gap212.Gap212Certificate`: the existence of a symmetric, square-integrable function F
 supported on the set T_45 of the parameter datum `gap212Params` with
@@ -9,12 +29,8 @@ supported on the set T_45 of the parameter datum `gap212Params` with
 
 At the time of writing, no such F is published in that repository or in the draft paper
 ("A New Bound for Small Gaps Between Primes", Axiom Math, preliminary draft of 3 September 2026), whose
-Theorem 11.1 states the value of 45 J / I for a vector P* that is not printed.
-
-This repository contains an F that was computed independently, the exact value of 45 J(F) / I(F) for it, and the
-programs that produced and checked it. It is not the authors' F.
-
-## The witness
+Theorem 11.1 states the value of 45 J / I for a vector P* that is not printed. The F given here is not the
+authors' F.
 
 In the dilated coordinates x = 4t of Section 9.3 of the draft (support parameters L = 53/50, tau = 249/250,
 g = 41/625, caps C(m) = 4 B_m),
@@ -37,35 +53,75 @@ for d = 21 as a fraction (numerator 387 digits, denominator 386 digits).
 The draft states 4.00438409833460131937... for its P*. The value above agrees with it to 17 significant digits and
 is slightly larger, as expected if the vector here is the maximiser over B_21 and P* a rounded maximiser.
 
-### File format
+The definitions were read against `Gap212Challenge/Basic.lean` (`T`, `Iint`, `Jint`, `gap212Params`,
+`Certificate`).
 
-A witness file is a JSON object. `K`, `L`, `tau`, `g` and `caps_C` describe the support in dilated coordinates
-(`caps_C[m-1]` = C(m); the last value repeats). `terms` is a list of `[a, alpha, c]` with the integer c written
-as a string. `ratio_enclosure` is the Arb ball for 45 J/I that was obtained when the file was written.
+## 2. Stadlmann's displayed support already gives k = 48
 
-## Checking it
+Stadlmann (arXiv:2608.31126v1) proves H_1 <= 240 with k = 49 variables on the one-band support with
+eps = 0.0075, A_1 = 0.253, delta = 0.028 and caps B_{1,1} = B_{1,2} = 0.15, B_{1,m} = 0.17 for m >= 3.
+On our reading of the paper, k enters the argument only through the final variational step: the conditions on
+the support do not involve k.
+
+With these parameters left unchanged, the variational step also goes through for k = 48:
+
+    48 * J(F) / I(F) = 1.00016163191936651019604118795393140362670...
+
+for the function F of degree 22 with 1041 terms in `witnesses/stadlmann_k48_d22.json`. The value is an explicit
+fraction (`witnesses/stadlmann_k48_d22_exact_ratio.txt`, numerator and denominator of 420 digits each), computed
+in exact rational arithmetic and enclosed by ball arithmetic; the two agree on all 60 digits compared. Since the
+narrowest admissible 48-tuple has diameter H(48) = 236, her theorem with her own parameters yields H_1 <= 236.
+
+The margin is small. The best ratio over B_d for this support is 0.99953 at d = 21, 1.00016 at d = 22,
+1.00062 at d = 23 and 1.00124 at d = 25 (ball arithmetic), so degree 22 is the lowest that works.
+
+The bound 236 itself is not new: Kintali ("Improved bounded gaps between primes", 1 September 2026) obtained it
+first, with modified parameters (delta = 0.0182 and a single cap 0.1899), and smaller bounds have been announced
+since. The observation here is only that the parameters displayed in the paper need no change for k = 48.
+
+The witness is written in the coordinates x = c*t with c = (26/25)/(A_1 + eps) = 2080/521, in which the support
+is {|x|_1 <= 26/25, ...}. The file records c as `scale`; in the physical scale the ratio is
+48 J(F~) / (c * I(F~)).
+
+## File format
+
+A witness file is a JSON object. `K`, `L`, `tau`, `g` and `caps_C` describe the support in the coordinates of the
+file: T~ = {x >= 0, |x|_1 <= L, the coordinates exceeding g sum to at most C(their number)}, with
+`caps_C[m-1]` = C(m) and the last value repeating; the marginal J integrates over the first K-1 coordinates with
+sum at most `tau`. `terms` is a list of `[a, alpha, c]` with the integer c written as a string, for
+F~ = sum c (L - |x|_1)^a m_alpha(x). If `scale` is present the coordinates are x = scale * t and the criterion is
+K J/(scale * I) > 1; if it is absent the coordinates are x = 4t and the criterion is K J/I > 4.
+`ratio_enclosure` is the Arb ball that was obtained when the file was written.
+
+## Checking a witness
 
 Requirements: Python 3 with `python-flint` (and `numpy` for the Monte Carlo test). See `requirements.txt`.
 
-**Ball arithmetic** (about 50 minutes on two processes of a laptop):
+**Ball arithmetic** (about 50 minutes for the 212 witness, about 15 minutes for the k = 48 witness, on two processes of
+a laptop):
 
     cd src
     WORKERS=2 python verify_ball.py ../witnesses/axiom212_k45_d21.json
+    WORKERS=2 python verify_ball.py ../witnesses/stadlmann_k48_d22.json
 
-This recomputes the Gram matrices of I and J on the support for B_21 with Arb balls at 1536 bits and encloses
-45 J/I for the integer coefficient vector. Only the support and the coefficients are read from the file.
+This recomputes the Gram matrices of I and J on the support for B_d with Arb balls at 1536 bits and encloses the
+ratio for the integer coefficient vector. Only the support, the scale and the coefficients are read from the file.
 
-**Exact rational arithmetic** (about 12 hours on two processes; a different program):
+**Exact rational arithmetic** (about 12 hours each on two processes; a different program):
 
     cd src
     WITNESS=../witnesses/axiom212_k45_d21.json WORKERS=2 python run_profile.py axiom
+    WITNESS=../witnesses/stadlmann_k48_d22.json WORKERS=2 python run_profile.py stadlmann48
 
 This squares F first, integrates stratum by stratum in exact rationals, and writes the fraction to
-`result_axiom.txt`. It checkpoints after every stratum and resumes when restarted.
+`result_<profile>.txt`. It checkpoints after every stratum and resumes when restarted.
 
-**How the witness was found:** `python gramtab.py 21` builds the tables and Gram matrices;
-`python gram_report.py gramtab_d21_gram.pkl` extracts the dominant generalized eigenvector by repeated squaring,
-rounds it to integers and encloses its Rayleigh quotient with scalar ball operations.
+**How the witnesses were found.** For the 212 datum: `python gramtab.py 21` builds the tables and Gram matrices,
+and `python gram_report.py gramtab_d21_gram.pkl` extracts the dominant generalized eigenvector by repeated
+squaring, rounds it to integers and encloses its Rayleigh quotient with scalar ball operations. For a support in
+`profiles.py`: `python support_run.py stadlmann48 25`, then
+`python support_report.py stadlmann48 gramtab_stadlmann48_k48_d25_gram.pkl 21 25` does the same for every degree
+from 21 to 25 and writes the witness of the lowest sufficient degree.
 
 ## What has been checked
 
@@ -73,39 +129,44 @@ rounds it to integers and encloses its Rayleigh quotient with scalar ball operat
   assembles Gram matrices, the other squares F first and integrates in exact rationals. They are not fully
   independent: they share the description of the strata and cells of the marginal (`axiom212_v2`), the
   multiplication of monomial symmetric polynomials (`capped_mono.mmul`) and small helpers, and the ball
-  program's cell integrals are a port of the exact formulas. For the d = 21 witness they agree on all 40 digits
-  compared.
+  program's cell integrals are a port of the exact formulas. For the 212 witness they agree on all 40 digits
+  compared, for the k = 48 witness on all 60.
 - 282 random table entries of the ball program agree with the exact program to 1e-60. At degree 4 the Gram
   matrices agree entry by entry with an earlier implementation in the power-sum basis (not included here).
 - A run of the ball program that avoids FLINT matrix products (`NOMAT=1`) gives the same balls for every Gram
-  entry at d = 21. See the note on FLINT below.
-- The definitions were read against `Gap212Challenge/Basic.lean` (`T`, `Iint`, `Jint`, `gap212Params`,
-  `Certificate`). As a test of that reading, `src/bruteforce_def.py` compares the ball program with a Monte Carlo
-  evaluation that uses no cell decomposition, only the pointwise membership test for T and the condition of
-  `Jregion` (4 variables, 10 basis functions, 200 million samples): all 110 Gram entries of I and J agree within
-  two standard errors (relative errors 0.04 % to 0.4 %). This tests the set-up, not the 45-variable value.
+  entry of the 212 datum at d = 21. See the note on FLINT below.
+- As a test of the reading of the definitions, `src/bruteforce_def.py` compares the ball program with a Monte
+  Carlo evaluation that uses no cell decomposition, only the pointwise membership test for T and the condition of
+  `Jregion` in the Lean file (4 variables, 10 basis functions, 200 million samples): all 110 Gram entries of I
+  and J agree within two standard errors (relative errors 0.04 % to 0.4 %). This tests the set-up, not the
+  values in 45 or 48 variables.
 - On another support the ball program reproduces a published number: the 34 digits printed in Kintali's paper
-  (1 September 2026) for the 1295-term witness of `AxiomMath/PrimeGapsLib` on his k = 48 support.
-- The agreement with Theorem 11.1 of the draft to 17 digits (above) is evidence from outside these programs that
-  the support and the marginal are the ones the authors used.
+  for the 1295-term witness of `AxiomMath/PrimeGapsLib` on his k = 48 support.
+- The agreement with Theorem 11.1 of the Axiom draft to 17 digits is evidence from outside these programs that
+  the support and the marginal of the 212 datum are the ones the authors used.
+- H(48) = 236 was confirmed by exhaustive search (no admissible 48-tuple of diameter at most 235; an explicit
+  one of diameter 236). That search is not part of this repository.
 
 ## What this is not
 
-- It is a computer-algebra computation, not a Lean proof of `Gap212Certificate`.
-- It does not replace the authors' own F or the matrices behind Theorem 11.1.
-- It says nothing about the analytic hypotheses of the formalization (the equidistribution estimates, the Harman
-  reduction, bilinear Bombieri-Vinogradov) or about Sections 5-8 of the draft.
+- These are computer-algebra computations, not formal proofs. In particular the 212 witness is not a Lean proof
+  of `Gap212Certificate`, and it does not replace the authors' own F or the matrices behind Theorem 11.1.
+- Nothing here examines the analytic parts of the papers: the equidistribution estimates, the Harman reduction,
+  bilinear Bombieri-Vinogradov, Sections 5-8 of the Axiom draft, or the proofs in arXiv:2608.31126. The k = 48
+  observation is conditional on Stadlmann's theorem exactly as her own k = 49 result is.
 
 ## A note on FLINT 3.6.0
 
 `python-flint` 0.9.0 ships FLINT 3.6.0, which has a known bug in an FFT-based multiplication routine (fixed
 upstream in FLINT pull request 2790). The exact program uses scalar `fmpq` arithmetic only, no polynomial or
 matrix products. The ball program uses `arb_mat` products while building tables unless `NOMAT=1` is set; the
-final enclosure of the ratio always uses scalar ball operations. Both modes gave identical Gram matrices here.
+final enclosure of the ratio always uses scalar ball operations. Both modes gave identical Gram matrices for the
+212 datum.
 
 ## Files
 
-- `src/gramtab.py`, `src/gram_report.py`, `src/verify_ball.py`: the ball program.
+- `src/gramtab.py`, `src/gram_report.py`, `src/verify_ball.py`, `src/support_run.py`, `src/support_report.py`:
+  the ball program.
 - `src/run_profile.py`, `src/kintali_J.py`, `src/kintali_capped.py`, `src/capped_mono.py`,
   `src/mono_engine.py`: the exact program. `src/axiom212_v2.py` holds the cell geometry of the marginal, used by
   both. `src/profiles.py` lists the supports.
