@@ -47,8 +47,9 @@ as 45 J(F~) / I(F~) > 4.
 | `witnesses/axiom212_k45_d21.json` | 21 | 846 | 4.00438409833460132024933958040890879577... | 1.00109602458365033006233489510222719894... | exact rational arithmetic, and ball arithmetic |
 | `witnesses/axiom212_k45_d20.json` | 20 | 707 | 4.00240137702709155691567799325574511554... | 1.00060034425677288922891949831393627888... | ball arithmetic only |
 
-The coefficients are integers of at most 51 digits. `witnesses/axiom212_k45_d21_exact_ratio.txt` holds the value
-for d = 21 as a fraction (numerator 387 digits, denominator 386 digits).
+The coefficients are integers of at most 51 digits. `witnesses/axiom212_k45_d21_exact_ratio.txt` holds the
+dilated value 45 J(F~)/I(F~) = 4.00438... for d = 21 as a fraction (numerator 387 digits, denominator 386 digits);
+the physical value 45 J(F)/I(F) is that fraction divided by 4.
 
 The draft states 4.00438409833460131937... for its P*. The value above agrees with it to 17 significant digits and
 is slightly larger, as expected if the vector here is the maximiser over B_21 and P* a rounded maximiser.
@@ -68,7 +69,8 @@ With these parameters left unchanged, the variational step also goes through for
     48 * J(F) / I(F) = 1.00016163191936651019604118795393140362670...
 
 for the function F of degree 22 with 1041 terms in `witnesses/stadlmann_k48_d22.json`. The value is an explicit
-fraction (`witnesses/stadlmann_k48_d22_exact_ratio.txt`, numerator and denominator of 420 digits each), computed
+fraction (`witnesses/stadlmann_k48_d22_exact_ratio.txt`, numerator and denominator of 420 digits each; this file
+is in the physical scale, unlike the one for the 212 witness), computed
 in exact rational arithmetic and enclosed by ball arithmetic; the two agree on all 60 digits compared. Since the
 narrowest admissible 48-tuple has diameter H(48) = 236, her theorem with her own parameters yields H_1 <= 236.
 
@@ -131,6 +133,13 @@ from 21 to 25 and writes the witness of the lowest sufficient degree.
   multiplication of monomial symmetric polynomials (`capped_mono.mmul`) and small helpers, and the ball
   program's cell integrals are a port of the exact formulas. For the 212 witness they agree on all 40 digits
   compared, for the k = 48 witness on all 60.
+- Independent recomputation by another person: Carlos Toledo (`carlostoledo1891`) reports that a program written
+  from scratch, which shares no code with this repository and uses only the witness files, the coordinates above
+  and the Lean definitions, gives for the d = 21 witness exactly the fraction in
+  `witnesses/axiom212_k45_d21_exact_ratio.txt`, and for the d = 20 witness an exact value inside the ball given
+  here ([comment of 16 November 2026 in AxiomMath/BGP212 issue 2](https://github.com/AxiomMath/BGP212/issues/2#issuecomment-6918984119),
+  [his code](https://github.com/carlostoledo1891/cert-machine/tree/main/instruments/bgp212-witness)). I have not
+  run his program myself.
 - 282 random table entries of the ball program agree with the exact program to 1e-60. At degree 4 the Gram
   matrices agree entry by entry with an earlier implementation in the power-sum basis (not included here).
 - A run of the ball program that avoids FLINT matrix products (`NOMAT=1`) gives the same balls for every Gram
