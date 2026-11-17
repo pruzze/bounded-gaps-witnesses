@@ -1,0 +1,7 @@
+negative_count 116856576
+positive_count 115608424
+first -2428305931
+last 2401341727
+D 4827554952
+long_pairs 4672314934
+budget 4672314960

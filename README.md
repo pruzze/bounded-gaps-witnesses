@@ -18,6 +18,12 @@ Neither is a new bound. The first fills in a hypothesis of a published formaliza
 observation about a published parameter choice. Both rest entirely on the analytic results of the papers, which
 are not examined here.
 
+A third, separate part is in [`kapila_h2_h5/`](kapila_h2_h5/): admissible tuples that, with the unchanged
+certificates of A. Kapila's hexagon:2610.00419v2, give H_2 <= 19 842, H_3 <= 1 357 700, H_4 <= 82 205 490 and
+H_5 <= 4 827 554 952 (the paper: 19 844, 1 357 780, 82 234 788, 4 830 355 416). These are conditional on that
+paper, whose certified values were reproduced in floating point but whose rigorous enclosures and parts of the
+analysis were not checked. See the README in that folder.
+
 ## 1. The numerical certificate of H_1 <= 212
 
 Axiom Math's Lean formalization of H_1 <= 212
@@ -184,6 +190,7 @@ final enclosure of the ratio always uses scalar ball operations. Both modes gave
   `src/mono_engine.py`: the exact program. `src/axiom212_v2.py` holds the cell geometry of the marginal, used by
   both. `src/profiles.py` lists the supports.
 - `src/bruteforce_def.py`: the Monte Carlo test against the definitions.
+- `kapila_h2_h5/`: tuples, checks and notes for the H_2 to H_5 bounds of hexagon:2610.00419v2 (own README).
 
 ## Authorship and licence
 
