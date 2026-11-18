@@ -1,0 +1,43 @@
+[    0.0s] ../bundle/prime_gap_verified/mpfr_finer_runs/m5.json: k = 232500000, basis [(), (2,), (3,), (4,), (2, 2)], 901 cells, tau = [0.999999046325684 +/- 4.07e-16], prec 192
+[    0.0s] c = [0.0523612977733998 +/- 3.63e-17], T = [0.200449243522491 +/- 2.49e-16], a_g = [5.16671484657606e-9 +/- 1.36e-24], m2 = [8.2142259906040897231e-8 +/- 1.79e-28]
+[    0.0s] marginal keys [(), (2,), (3,), (4,), (2, 2)], e-values [0, 2, 3, 4]; 14 numerator and 14 denominator weights
+[    0.0s] E X = [4.53063012695e-9 +/- 3.68e-21], f(0) = [4440302411.63 +/- 4.81e-3]
+[    0.0s] J = 1603 frequencies (|phi(xi_J)| = [0.999999552389033 +/- 2.56e-16])
+[    5.6s]   transforms 500/1603
+[   12.5s]   transforms 1000/1603
+[   19.2s]   transforms 1500/1603
+[   20.9s] weighted transforms done
+[   21.1s] truncation: sum_(j>J) |phi|^(n-4) <= [2.1738e-44 +/- 1.14e-50]  (n = 232499999, 2529 blocks)
+[   21.4s] truncation: sum_(j>J) |phi|^(n-4) <= [2.1738e-44 +/- 2.12e-50]  (n = 232500000, 2529 blocks)
+[   21.5s] periodisation (best lambda per weight): largest bound [3.3144e-68 +/- 1.80e-74] (relative to m_W)
+[   27.1s] D = E[P^2] = [0.000233604572465503 +/- 7.98e-19]   (bundle den = 0.0002336045724654784)
+[   27.2s] 1802 segments on [0, tau]; kink radius [2.52e-58 +/- 2.34e-61]
+[   38.4s]   segments 100/1802
+[   52.3s]   segments 200/1802
+[   66.8s]   segments 300/1802
+[   75.6s]   segments 400/1802
+[   84.4s]   segments 500/1802
+[   94.0s]   segments 600/1802
+[  103.2s]   segments 700/1802
+[  113.6s]   segments 800/1802
+[  124.5s]   segments 900/1802
+[  135.5s]   segments 1000/1802
+[  147.5s]   segments 1100/1802
+[  163.7s]   segments 1200/1802
+[  177.0s]   segments 1300/1802
+[  205.5s]   segments 1400/1802
+[  219.5s]   segments 1500/1802
+[  231.3s]   segments 1600/1802
+[  242.2s]   segments 1700/1802
+[  252.1s]   segments 1800/1802
+[  252.1s]   segments 1802/1802
+RESULT
+  trial ../bundle/prime_gap_verified/mpfr_finer_runs/m5.json
+  J = 1603, P0 = 8.00000000000000000000000000000000000000000000000000000000, prec = 192, segments = 1802
+  D = [0.000233604572465503 +/- 7.98e-19]
+  N (integrals) = [1.572089835638270e-18 +/- 3.89e-34]
+  error terms: truncation [7.24e-58 +/- 3.51e-61], periodisation [8.00e-82 +/- 4.59e-85], kinks [3.93e-67 +/- 2.04e-70]
+  N = [1.572089835638270e-18 +/- 3.89e-34]
+  Q = [19.0481293148758 +/- 5.09e-14]
+  Q lower endpoint = [19.048129314875749159 +/- 4.74e-19]
+[  252.1s] done

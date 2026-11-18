@@ -1,0 +1,40 @@
+[    0.0s] ../bundle/prime_gap_verified/mpfr_global_runs/m4.json: k = 5090000, basis [(), (2,), (3,), (4,), (2, 2)], 801 cells, tau = [0.999987602233887 +/- 2.82e-16], prec 192
+[    0.0s] c = [0.0653496594729649 +/- 1.58e-17], T = [0.258555989941434 +/- 2.93e-16], a_g = [2.66856661392349e-7 +/- 3.99e-22], m2 = [3.0063477162136314277e-6 +/- 4.68e-26]
+[    0.0s] marginal keys [(), (2,), (3,), (4,), (2, 2)], e-values [0, 2, 3, 4]; 14 numerator and 14 denominator weights
+[    0.0s] E X = [2.12896156681e-7 +/- 3.44e-19], f(0) = [77888644.7833 +/- 2.60e-5]
+[    0.0s] J = 1326 frequencies (|phi(xi_J)| = [0.999978837314560 +/- 2.42e-16])
+[    5.5s]   transforms 500/1326
+[   11.5s]   transforms 1000/1326
+[   15.6s] weighted transforms done
+[   15.8s] truncation: sum_(j>J) |phi|^(n-4) <= [4.6149e-46 +/- 2.36e-51]  (n = 5089999, 1945 blocks)
+[   16.0s] truncation: sum_(j>J) |phi|^(n-4) <= [4.6148e-46 +/- 2.58e-51]  (n = 5090000, 1945 blocks)
+[   16.1s] periodisation (best lambda per weight): largest bound [2.8244e-46 +/- 2.91e-52] (relative to m_W)
+[   19.6s] D = E[P^2] = [0.00015086553654350 +/- 6.90e-18]   (bundle den = 0.000150865536543469)
+[   19.7s] 1602 segments on [0, tau]; kink radius [2.82e-58 +/- 3.59e-61]
+[   25.3s]   segments 100/1602
+[   33.1s]   segments 200/1602
+[   42.2s]   segments 300/1602
+[   51.0s]   segments 400/1602
+[   59.8s]   segments 500/1602
+[   68.8s]   segments 600/1602
+[   77.9s]   segments 700/1602
+[   93.0s]   segments 800/1602
+[  109.9s]   segments 900/1602
+[  123.7s]   segments 1000/1602
+[  136.7s]   segments 1100/1602
+[  146.9s]   segments 1200/1602
+[  156.8s]   segments 1300/1602
+[  165.9s]   segments 1400/1602
+[  174.1s]   segments 1500/1602
+[  181.7s]   segments 1600/1602
+[  181.7s]   segments 1602/1602
+RESULT
+  trial ../bundle/prime_gap_verified/mpfr_global_runs/m4.json
+  J = 1326, P0 = 8.00000000000000000000000000000000000000000000000000000000, prec = 192, segments = 1602
+  D = [0.00015086553654350 +/- 6.90e-18]
+  N (integrals) = [1.35788292841204e-15 +/- 5.54e-30]
+  error terms: truncation [2.53e-56 +/- 3.09e-59], periodisation [1.24e-56 +/- 8.45e-60], kinks [4.83e-64 +/- 3.05e-67]
+  N = [1.35788292841204e-15 +/- 5.54e-30]
+  Q = [15.238803151528 +/- 4.54e-13]
+  Q lower endpoint = [15.238803151527546954 +/- 4.16e-19]
+[  181.7s] done

@@ -1,0 +1,34 @@
+[    0.0s] ../bundle/prime_gap_verified/mpfr_runs/m3.json: k = 110070, basis [(), (2,), (3,), (4,), (2, 2), (2, 3)], 601 cells, tau = [0.999069690704346 +/- 2.97e-16], prec 192
+[    0.0s] c = [0.0868194092232324 +/- 2.75e-17], T = [0.379679485631934 +/- 3.84e-16], a_g = [5.82722624163296e-6 +/- 3.46e-21], m2 = [0.00010464610152871293911 +/- 4.21e-24]
+[    0.0s] marginal keys [(), (2,), (3,), (4,), (2, 2), (2, 3)], e-values [0, 2, 3, 4, 5]; 18 numerator and 18 denominator weights
+[    0.0s] E X = [9.93925347728e-6 +/- 2.05e-18], f(0) = [1267779.52360 +/- 3.23e-6]
+[    0.0s] J = 998 frequencies (|phi(xi_J)| = [0.999036335068359 +/- 4.13e-16])
+[    7.2s]   transforms 500/998
+[   15.6s] weighted transforms done
+[   15.7s] truncation: sum_(j>J) |phi|^(n-4) <= [1.7490e-45 +/- 3.35e-50]  (n = 110069, 1484 blocks)
+[   15.9s] truncation: sum_(j>J) |phi|^(n-4) <= [1.7473e-45 +/- 4.49e-50]  (n = 110070, 1484 blocks)
+[   16.0s] periodisation (best lambda per weight): largest bound [1.5429e-28 +/- 2.06e-33] (relative to m_W)
+[   19.0s] D = E[P^2] = [1.61513300959e-5 +/- 5.65e-17]   (bundle den = 1.615114682242926e-05)
+[   19.0s] 1199 segments on [0, tau]; kink radius [3.22e-58 +/- 4.94e-61]
+[   25.8s]   segments 100/1199
+[   32.9s]   segments 200/1199
+[   39.9s]   segments 300/1199
+[   47.4s]   segments 400/1199
+[   55.4s]   segments 500/1199
+[   65.5s]   segments 600/1199
+[   79.0s]   segments 700/1199
+[   89.1s]   segments 800/1199
+[   99.8s]   segments 900/1199
+[  108.6s]   segments 1000/1199
+[  117.3s]   segments 1100/1199
+[  125.0s]   segments 1199/1199
+RESULT
+  trial ../bundle/prime_gap_verified/mpfr_runs/m3.json
+  J = 998, P0 = 8.00000000000000000000000000000000000000000000000000000000, prec = 192, segments = 1199
+  D = [1.61513300959e-5 +/- 5.65e-17]
+  N (integrals) = [1.754960249306e-13 +/- 1.66e-26]
+  error terms: truncation [4.76e-53 +/- 3.54e-56], periodisation [5.49e-36 +/- 3.63e-39], kinks [1.51e-61 +/- 1.34e-64]
+  N = [1.754960249306e-13 +/- 1.66e-26]
+  Q = [11.4289123847 +/- 4.15e-11]
+  Q lower endpoint = [11.428912384658514700 +/- 3.34e-20]
+[  125.0s] done

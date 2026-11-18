@@ -1,0 +1,14 @@
+[    0.0s] ../bundle/prime_gap_verified/mpfr_runs/m3.json: k = 110070, basis [(), (2,), (3,), (4,), (2, 2), (2, 3)], 601 cells, tau = [0.999069690704346 +/- 2.97e-16], prec 192
+[    0.0s] c = [0.0868194092232324 +/- 2.75e-17], T = [0.379679485631934 +/- 3.84e-16], a_g = [5.82722624163296e-6 +/- 3.46e-21], m2 = [0.00010464610152871293911 +/- 4.21e-24]
+[    0.0s] marginal keys [(), (2,), (3,), (4,), (2, 2), (2, 3)], e-values [0, 2, 3, 4, 5]; 18 numerator and 18 denominator weights
+[    0.0s] E X = [9.93925347728e-6 +/- 2.05e-18], f(0) = [1267779.52360 +/- 3.23e-6]
+[    0.0s] J = 998 frequencies (|phi(xi_J)| = [0.999036335068359 +/- 4.13e-16])
+[    6.6s]   transforms 500/998
+[   14.0s] weighted transforms done
+[   14.2s] truncation: sum_(j>J) |phi|^(n-4) <= [1.7490e-45 +/- 3.35e-50]  (n = 110069, 1484 blocks)
+[   14.3s] truncation: sum_(j>J) |phi|^(n-4) <= [1.7473e-45 +/- 4.49e-50]  (n = 110070, 1484 blocks)
+[   14.5s] periodisation (best lambda per weight): largest bound [1.5429e-28 +/- 2.06e-33] (relative to m_W)
+[   17.3s] D = E[P^2] = [1.61513300959e-5 +/- 5.65e-17]   (bundle den = 1.615114682242926e-05)
+[   17.3s] 1199 segments on [0, tau]; kink radius [3.22e-58 +/- 4.94e-61]
+[  125.0s] kappa and rho agree on 12 random segments (2 points each); largest relative difference of midpoints: kappa 1.9e-32, rho 5.6e-03
+[  330.1s] mass check: sum of segment integrals of rho_() = [0.379036847468814 +/- 4.72e-16]; C_()(tau) = [0.37903684746881400 +/- 4.93e-18]; overlap: True

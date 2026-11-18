@@ -20,9 +20,11 @@ are not examined here.
 
 A third, separate part is in [`kapila_h2_h5/`](kapila_h2_h5/): admissible tuples that, with the unchanged
 certificates of A. Kapila's hexagon:2610.00419v2, give H_2 <= 19 842, H_3 <= 1 357 700, H_4 <= 82 205 490 and
-H_5 <= 4 827 554 952 (the paper: 19 844, 1 357 780, 82 234 788, 4 830 355 416). These are conditional on that
-paper, whose certified values were reproduced in floating point but whose rigorous enclosures and parts of the
-analysis were not checked. See the README in that folder.
+H_5 <= 4 827 554 952 (the paper: 19 844, 1 357 780, 82 234 788, 4 830 355 416). With the paper's quotient
+bounds recomputed rigorously in ball arithmetic (they come out larger than the certified ones), the same
+certificates give H_3 <= 1 357 652, H_4 <= 82 190 538 and H_5 <= 4 827 255 418. All of these are conditional on
+that paper; its support-loss bounds, pair costs and parts of the analysis were not checked. See the README in
+that folder.
 
 ## 1. The numerical certificate of H_1 <= 212
 
